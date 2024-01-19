@@ -4,7 +4,7 @@ import FlipClock from './components/js/FlipClock';
 function App() {
   return (
     <div className="App">
-		<FlipClock></FlipClock>
+		  <FlipClock></FlipClock>
     </div>
   );
 }

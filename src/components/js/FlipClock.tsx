@@ -22,10 +22,6 @@ const Upper = styled(Div)`
 	transform-origin:50% 100%;
 	border-bottom:solid 2px black;
 `
-const Lower = styled(Div)`
-	top:0;
-	transform-origin:50% 0%;
-`
 const Number = styled(Div)`
 	font-size:80px;
 	color:white;
@@ -33,6 +29,14 @@ const Number = styled(Div)`
 	height:200%;
 	align-items:center;
 	justify-content:center;
+`
+
+const Lower = styled(Div)`
+	bottom:0;
+	transform-origin:50% 0%;
+	& ${Number} {
+		bottom:0;
+	}
 `
 
 function FlipClock() {

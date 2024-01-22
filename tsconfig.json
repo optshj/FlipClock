@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-<<<<<<< HEAD
     "target": "es2015",
-=======
-    "target": "es5",
->>>>>>> f4f154c7ab75547dda2e621008939a12fc4da1f8
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,10 +18,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-<<<<<<< HEAD
     "downlevelIteration": true,
-=======
->>>>>>> f4f154c7ab75547dda2e621008939a12fc4da1f8
     "jsx": "react-jsx"
   },
   "include": [

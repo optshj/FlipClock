@@ -5,19 +5,21 @@ interface FlipClockProps{
 }
 const Ul = styled.ul`
 	list-style:none;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
+	font-weight:bold;
+	list-style:none;
 `
 const FlipCard = styled.li`
 	position:absolute;
 	&.back{
-		z-index:1;
+		z-index:2;
 	}
 	&.front{
-		z-index:2;
+		z-index:1;
 	}
 `
 const Div = styled.div`
 	position:absolute;
-	z-index:1;
 	left:0;
 	overflow:hidden;
 	width:100%;
@@ -28,7 +30,6 @@ const Template = styled.div`
 	box-shadow:0 2px 5px rgba(0,0,0,.7);
 	width:100px;
 	height:150px;
-	border:1px solid gray;
 	border-radius:10px;
 	background-color:#191919;
 `
@@ -78,7 +79,7 @@ function FlipClock({count}:FlipClockProps) {
 				{[...Array(10).keys()].map((num) => (
 					<FlipCard
 						key={num}
-						className={`${num === count ? 'front':'back'}`}
+						className={`${num === count ? 'front':''}${num === (count+1)%10 ? 'back':''}`}
 						>
 						<Template>
 							<Upper>

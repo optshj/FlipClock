@@ -8,6 +8,7 @@ function Clock(){
         const intervalId = setInterval(()=> {
             setCount((count+1)%10);
         },1000);
+        return () => clearInterval(intervalId);
     })
 
     return(

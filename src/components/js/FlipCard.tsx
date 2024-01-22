@@ -41,20 +41,6 @@ const Number = styled(Div)`
 	align-items:center;
 	justify-content:center;
 `
-const Upper = styled(Div)`
-	top:0;
-	transform-origin:50% 100%;
-	border-bottom:solid 2px black;
-	animation: upperToMiddle .5s linear both;
-`
-const Lower = styled(Div)`
-	bottom:0;
-	transform-origin:50% 0%;
-	& ${Number} {
-		bottom:0;
-	}
-	animation: middleToLower .5s linear both;
-`
 const upperToMiddle = keyframes`
 	0%{
 		transform:rotateX(0deg);
@@ -70,6 +56,20 @@ const middleToLower = keyframes`
 	100%{
 		transform:rotateX(0deg);
 	}
+`
+const Upper = styled(Div)`
+	top:0;
+	transform-origin:50% 100%;
+	border-bottom:solid 2px black;
+	animation: ${upperToMiddle} 0.5s linear both;
+`
+const Lower = styled(Div)`
+	bottom:0;
+	transform-origin:50% 0%;
+	& ${Number} {
+		bottom:0;
+	}
+	animation: ${middleToLower} 0.5s 0.5s linear both;
 `
 function FlipClock({count}:FlipClockProps) {
 

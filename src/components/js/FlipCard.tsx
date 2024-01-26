@@ -8,28 +8,33 @@ interface FlipClockProps{
 
 const Ul = styled.ul`
 	list-style:none;
-	position:relative;
-	width:100px;
-	height:200px;
-	border-radius:10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
+	font-weight:bold;
+	list-style:none;
 `
 const Div = styled.div`
+	z-index:1;
 	position:absolute;
 	left:0;
 	overflow:hidden;
 	width:100%;
 	height:50%;
+	&::before {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        content: "";
+    }
 `
 const Number = styled(Div)`
-	font-weight:bold;
+	z-index:1;
 	font-size:80px;
 	color:white;
 	display:flex;
 	height:200%;
 	align-items:center;
 	justify-content:center;
-	background-color:#191919;
-	border-radius:10px;
 `
 const upperToMiddle = keyframes`
 	0%{
@@ -74,24 +79,24 @@ const increaseIndex = keyframes`
 const Upper = styled(Div)`
 	top:0;
 	transform-origin:50% 100%;
+	border-bottom:solid 2px black;
 `
 const Lower = styled(Div)`
 	bottom:0;
 	transform-origin:50% 0%;
-	${Number} {
+	& ${Number} {
 		bottom:0;
 	}
 `
 const FlipCard = styled.li`
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	&.hide{
-		visibility:hidden;
-	}
-	&.back{
+	position:absolute;
+	box-shadow:0 2px 5px rgba(0,0,0,.7);
+	width:100px;
+	height:150px;
+	border-radius:10px;
+	background-color:#191919;
+	&.front{
 		z-index:3;
-		visibility:visible;
 		${Upper}{
 			z-index:2;
 			animation: ${upperToMiddle} .5s linear both;
@@ -107,19 +112,18 @@ const FlipCard = styled.li`
 			}
 		}
 	}
-	&.front{
+	&.back{
 		z-index:2;
-		visibility:visible;
 		animation: ${increaseIndex} .5s .5s linear forwards;
 		${Upper}{
 			&::before{
-				animation: ${hide} .5s .3s linear both;
+				animation: ${hide} .5s .5s linear both;
 			}
 		}
 		${Lower}{
 			animation: ${middleToLower} .5s .5s linear both;
 			&::before{
-				animation: ${hide} .5s .3s linear both;
+				animation: ${hide} .5s .5s linear both;
 				background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
           		background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
 			}
@@ -132,7 +136,7 @@ function FlipClock({count}:FlipClockProps) {
 		<>
 			<Ul>
 				{[...Array(10).keys()].map((num) => (
-					<FlipCard className={`${num === count ? 'back':''}${num === (count+1)%10 ? 'front':''} hide`}>
+					<FlipCard className={`${num === count ? 'front':''}${num === (count+1)%10 ? 'back':''}`}>
 						<Upper>
 							<Number>
 								{num}

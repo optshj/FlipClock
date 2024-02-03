@@ -15,6 +15,7 @@ const Ul = styled.ul`
 const Div = styled.div`
 	z-index:1;
 	position:absolute;
+	background-color:#191919;
 	left:0;
 	overflow:hidden;
 	width:100%;
@@ -94,7 +95,6 @@ const FlipCard = styled.li`
 	width:100px;
 	height:150px;
 	border-radius:10px;
-	background-color:#191919;
 	&.front{
 		z-index:3;
 		${Upper}{

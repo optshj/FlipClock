@@ -8,14 +8,10 @@ interface FlipClockProps{
 
 const Ul = styled.ul`
 	list-style:none;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
-	font-weight:bold;
-	list-style:none;
 `
 const Div = styled.div`
-	z-index:1;
 	position:absolute;
-	background-color:#191919;
+	background-color:#333333;
 	left:0;
 	overflow:hidden;
 	width:100%;
@@ -29,8 +25,8 @@ const Div = styled.div`
     }
 `
 const Number = styled(Div)`
-	z-index:1;
 	font-size:80px;
+	font-weight:bold;
 	color:white;
 	display:flex;
 	height:200%;
@@ -80,7 +76,6 @@ const increaseIndex = keyframes`
 const Upper = styled(Div)`
 	top:0;
 	transform-origin:50% 100%;
-	border-bottom:solid 2px black;
 `
 const Lower = styled(Div)`
 	bottom:0;
@@ -94,8 +89,7 @@ const FlipCard = styled.li`
 	box-shadow:0 2px 5px rgba(0,0,0,.7);
 	width:100px;
 	height:150px;
-	border-radius:10px;
-	&.front{
+	&.back{
 		z-index:3;
 		${Upper}{
 			z-index:2;
@@ -112,7 +106,7 @@ const FlipCard = styled.li`
 			}
 		}
 	}
-	&.back{
+	&.front{
 		z-index:2;
 		animation: ${increaseIndex} .5s .5s linear forwards;
 		${Upper}{
@@ -136,7 +130,7 @@ function FlipClock({count}:FlipClockProps) {
 		<>
 			<Ul>
 				{[...Array(10).keys()].map((num) => (
-					<FlipCard className={`${num === count ? 'front':''}${num === (count+1)%10 ? 'back':''}`}>
+					<FlipCard className={`${num === (count+1)%10 ? 'front':''}${num === count ? 'back':''}`}>
 						<Upper>
 							<Number>
 								{num}

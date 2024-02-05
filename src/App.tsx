@@ -3,9 +3,9 @@ import Clock from './components/js/Clock';
 
 function App() {
     return (
-      <div className="App">
-        <Clock></Clock>
-      </div>
+    <div className="App">
+		<Clock></Clock>
+    </div>
     );
 }
 export default App;

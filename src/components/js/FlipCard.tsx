@@ -2,7 +2,8 @@ import React,{useState} from 'react';
 import styled,{keyframes} from 'styled-components';
 
 interface FlipClockProps{
-	count:number;
+	back:number;
+	front:number;
 }
 
 
@@ -74,10 +75,22 @@ const increaseIndex = keyframes`
 	}
 `
 const Upper = styled(Div)`
+	border-radius: 20px 20px 0 0;
 	top:0;
 	transform-origin:50% 100%;
+	&::after {
+          position: absolute;
+          z-index: 5;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background-color: rgba(0,0,0,.4);
+          content: "";
+        }
 `
 const Lower = styled(Div)`
+	border-radius: 0 0 20px 20px;
 	bottom:0;
 	transform-origin:50% 0%;
 	& ${Number} {
@@ -85,8 +98,9 @@ const Lower = styled(Div)`
 	}
 `
 const FlipCard = styled.li`
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	border-radius:20px;
 	position:absolute;
-	box-shadow:0 2px 5px rgba(0,0,0,.7);
 	width:100px;
 	height:150px;
 	&.back{
@@ -124,13 +138,13 @@ const FlipCard = styled.li`
 		}
 	}
 `
-function FlipClock({count}:FlipClockProps) {
+function FlipClock({back,front}:FlipClockProps) {
 
 	return(
 		<>
 			<Ul>
 				{[...Array(10).keys()].map((num) => (
-					<FlipCard className={`${num === (count+1)%10 ? 'front':''}${num === count ? 'back':''}`}>
+					<FlipCard className={`${num === front ? 'front':''}${num === back ? 'back':''}`}>
 						<Upper>
 							<Number>
 								{num}

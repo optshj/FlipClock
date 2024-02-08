@@ -9,6 +9,8 @@ interface FlipClockProps{
 
 const Ul = styled.ul`
 	list-style:none;
+	padding:0;
+	margin:0;
 `
 const Div = styled.div`
 	position:absolute;

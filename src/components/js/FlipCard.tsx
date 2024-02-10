@@ -28,7 +28,7 @@ const Div = styled.div`
     }
 `
 const Number = styled(Div)`
-	font-size:80px;
+	font-size:100px;
 	font-weight:bold;
 	color:white;
 	display:flex;

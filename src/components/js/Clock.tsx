@@ -1,8 +1,8 @@
 import React,{ useEffect,useState } from 'react'
 import styled from 'styled-components';
+
 import FlipClock from './FlipCard';
 import Colon from './Colon';
-
 
 
 const FlipForm = styled.div`
@@ -65,6 +65,8 @@ const ClockForm = styled.div`
 
 function Clock(){
     const [currentTime,setCurrentTime] = useState(new Date());
+	
+	
     useEffect(()=>{
         const intervalId = setInterval(()=> {
             setCurrentTime(new Date());
@@ -105,8 +107,10 @@ function Clock(){
 		}
 		return time;
 	}
+	
+	
     return(
-        <>
+        <>	
 			<ClockForm>
 				<FlipForm>
 					<FlipClock back={smooth_hour_back(hours)} front={smooth_hour_front(hours)} ></FlipClock>

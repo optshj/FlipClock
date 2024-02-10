@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import styled,{keyframes} from 'styled-components';
 
 interface FlipClockProps{
@@ -101,6 +101,7 @@ const Lower = styled(Div)`
 `
 const FlipCard = styled.li`
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	transform:translate(-50%,0%);
 	border-radius:20px;
 	position:absolute;
 	width:100px;

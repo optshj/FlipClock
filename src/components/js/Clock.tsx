@@ -38,14 +38,14 @@ const ClockForm = styled.div`
 	justify-content: center;
     align-items: center;
 	& > * {
-		margin-left: 70px;
+		margin-left: 60px;
 		&:first-child {
 			margin-left: 0;
 		}
 	}
 	@media (max-width:1000px) and (min-width:850px){
 		& > * {
-			margin-left: 7vw;
+			margin-left: 6vw;
 			&:first-child {
 				margin-left: 0;
 			}
@@ -53,7 +53,7 @@ const ClockForm = styled.div`
     }
 	@media (max-width:850px){
 		& > * {
-			margin-left: 59.5px;
+			margin-left: 51px;
 			&:first-child {
 				margin-left: 0;
 			}
@@ -88,6 +88,17 @@ function Clock(){
 		}
 		return Math.floor((time)/10)-1;
 	}
+	
+	const smooth_hour_front = (time:number) => {
+		return Math.floor((time)/10);
+	}
+	const smooth_hour_back = (time:number) => {
+		if (time === 0) {
+			return 2;
+		}
+		return Math.floor((time)/10)-1;
+	}
+	
 	const mininum_time = (time:number) => {
 		if (time === -1) {
 			return 9;
@@ -98,7 +109,7 @@ function Clock(){
         <>
 			<ClockForm>
 				<FlipForm>
-					<FlipClock back={smooth_time_back(hours)} front={smooth_time_front(hours)} ></FlipClock>
+					<FlipClock back={smooth_hour_back(hours)} front={smooth_hour_front(hours)} ></FlipClock>
 					<FlipClock back={(hours-1)%10} front={(hours)%10}></FlipClock>
 				</FlipForm>
 
@@ -106,7 +117,7 @@ function Clock(){
 
 				<FlipForm>
 					<FlipClock back={smooth_time_back(minutes)} front={smooth_time_front(minutes)}></FlipClock>
-					<FlipClock back={mininum_time(minutes)%10} front={(minutes)%10}></FlipClock>
+					<FlipClock back={mininum_time(minutes-1)%10} front={(minutes)%10}></FlipClock>
 				</FlipForm>
 
 					<Colon></Colon>

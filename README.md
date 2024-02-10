@@ -1,6 +1,7 @@
 # Flip 애니메이션이 적용된 시계 만들기
 
 ## 동작
+![trim](https://github.com/optshj/FlipClock/assets/105402944/69057643-6f68-425f-80ce-43300b82783f)
 
 ## 프로젝트 실행
     npm start
@@ -15,3 +16,6 @@
 * `Chore` : 빌드 업무 수정, 패키지 매니저 수정
 
 ## 2.적용 기술 스택
+* React
+* Type-Script
+* Styled-components
